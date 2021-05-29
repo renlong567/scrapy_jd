@@ -37,7 +37,7 @@ class JdSpider(scrapy.Spider):
         goods_url_list = response.xpath('//div[@id="J_goodsList"]/ul/li//div[@class="p-img"]/a/@href').extract()
         for goods_url in goods_url_list:
             yield SplashRequest('https:' + goods_url, endpoint='execute',
-                                args={'lua_source': lua_script, 'timeout': 50, 'wait': 0.5}, cache_args=['lua_source'],
+                                args={'lua_source': lua_script, 'timeout': 80, 'wait': 0.5}, cache_args=['lua_source'],
                                 callback=self.img_url_parse)
 
     def img_url_parse(self, response):
